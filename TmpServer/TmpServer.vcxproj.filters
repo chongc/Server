@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\CMD">
+      <UniqueIdentifier>{be19937e-ad2b-4071-b0fc-f5e2c9348484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Command">
+      <UniqueIdentifier>{ad5ffc10-d173-4cb4-9583-691bbc19c4a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Connector">
+      <UniqueIdentifier>{070a0b1e-bb76-4cd1-bf58-7529f8d7b9fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Connector">
+      <UniqueIdentifier>{2ed936fd-730f-4b5e-8f19-826458030a34}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CMD_GetContacts.cpp">
+      <Filter>源文件\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="CMD_HandleQueryUserstatus.cpp">
+      <Filter>源文件\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="CMD_HandleReceivefileReturn.cpp">
+      <Filter>源文件\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="CMD_HandleTextMessage.cpp">
+      <Filter>源文件\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="CMD_LoginVerify.cpp">
+      <Filter>源文件\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>源文件\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="CMD_ServerReceiveFile.cpp">
+      <Filter>源文件\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MainConnector.cpp">
+      <Filter>源文件\Connector</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientConnector.cpp">
+      <Filter>源文件\Connector</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>头文件\CMD</Filter>
+    </ClInclude>
+    <ClInclude Include="CMD_LoginVerify.h">
+      <Filter>头文件\CMD</Filter>
+    </ClInclude>
+    <ClInclude Include="CMD_GetContacts.h">
+      <Filter>头文件\CMD</Filter>
+    </ClInclude>
+    <ClInclude Include="CMD_HandleReceivefileReturn.h">
+      <Filter>头文件\CMD</Filter>
+    </ClInclude>
+    <ClInclude Include="CMD_HandleQueryUserstatus.h">
+      <Filter>头文件\CMD</Filter>
+    </ClInclude>
+    <ClInclude Include="CMD_HandleTextMessage.h">
+      <Filter>头文件\CMD</Filter>
+    </ClInclude>
+    <ClInclude Include="CMD_ServerReceiveFile.h">
+      <Filter>头文件\CMD</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientConnector.h">
+      <Filter>头文件\Connector</Filter>
+    </ClInclude>
+    <ClInclude Include="MainConnector.h">
+      <Filter>头文件\Connector</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
