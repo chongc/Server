@@ -9,7 +9,19 @@ std::map<int, Contact>ContactsMap;
 static void Init()
 {
 	static User u1("", "赖秋生", "市场部");
+	static User u2("002", "陶建风", "研发部");
+	static User u3("003", "李双峰", "研发部");
 	static User u9("009", "丁浩", "研发部");
+
+	u1.SetPassword("");
+	u2.SetPassword("");
+	u3.SetPassword("");
+	u9.SetPassword("");
+	Users.push_back(&u1);
+	Users.push_back(&u2);
+	Users.push_back(&u3);
+	Users.push_back(&u9);
+
 
 	static Contact c1("", "赖秋生", "市场部");
 	static Contact c2("002", "陶建风", "研发部");
@@ -31,15 +43,12 @@ static void Init()
 	ContactsMap[7] = c8;
 	ContactsMap[8] = c9;
 	
-
-	u1.SetPassword("");
-	u9.SetPassword("1");
-	Users.push_back(&u1);
-	Users.push_back(&u9);
-
+	
 	UserAddContact(u1);
+	UserAddContact(u2);
+	UserAddContact(u3);
 	UserAddContact(u9);
-
+	
 }
 
 
@@ -61,10 +70,10 @@ int main()
 char VerifyLogin(const MyString& UserID, const MyString& PWD)
 {
 	char ret = LOGIN_USERERR;
-	for (unsigned int i = 0; i < Users.size(); i++){
-		User* u = Users[i];
-		if(UserID == u->GetId()){
-			ret = u->Verify(PWD);
+	std::vector<User*>::iterator iter = Users.begin();
+	for (; iter != Users.end(); iter++){
+		if(UserID == (*iter)->GetId()){
+			ret = (*iter)->Verify(PWD);
 			break;
 		}
 	}
@@ -75,22 +84,23 @@ char VerifyLogin(const MyString& UserID, const MyString& PWD)
 
 User* GetUser(const MyString& UserID)
 {
-	User* u=NULL;
-	for (unsigned int i = 0; i < Users.size(); i++){
-		u = Users[i];
-		if (strcmp(UserID, u->GetId()) == 0){
+	
+	std::vector<User*>::iterator iter = Users.begin();
+	for (; iter != Users.end(); iter++){
+		if (strcmp(UserID, (*iter)->GetId()) == 0){
 			break;
 		}
 	}
-	return u;
+	return *iter;
 }
 
 SOCKET GetUserSocket(const MyString& UserID)
 {
 	SOCKET socket;
-	for (unsigned int i = 0; i < Connectors.size(); i++){
-		if (Connectors[i]->GetUser()->GetId()== UserID){
-			socket = Connectors[i]->GetSocket();
+	std::vector<ClientConnector*>::iterator iter = Connectors.begin();
+	for (; iter != Connectors.end(); iter++){
+		if ((*iter)->GetUser()->GetId()== UserID){
+			socket = (*iter)->GetSocket();
 			break;
 		}
 	}
@@ -100,9 +110,10 @@ char IsOnline(const MyString& UserID)
 {
 	char Status = USERSTATUS_OFFLINE;
 	bool Online = false;
-	for (unsigned int i = 0; i < Connectors.size(); i++){
-		if (Connectors[i]->GetUser() == NULL)continue;
-		if (Connectors[i]->GetUser()->GetId()==UserID){
+	std::vector<ClientConnector*>::iterator iter = Connectors.begin();
+	for (; iter != Connectors.end(); iter++){
+		if ((*iter)->GetUser() == NULL)continue;
+		if ((*iter)->GetUser()->GetId()==UserID){
 			Online = true;
 			break;
 		}

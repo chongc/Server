@@ -1,18 +1,2 @@
-﻿  User.cpp
-  stdafx.cpp
-  MainConnector.cpp
-  main.cpp
-  Command.cpp
-  CMD_ServerReceiveFile.cpp
-c:\users\89370\desktop\dialogduilib1\tmpserver\cmd_serverreceivefile.cpp(33): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : 参见“fopen”的声明
-  CMD_LoginVerify.cpp
-  CMD_HandleTextMessage.cpp
-  CMD_HandleReceivefileReturn.cpp
-c:\users\89370\desktop\dialogduilib1\tmpserver\cmd_handlereceivefilereturn.cpp(40): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : 参见“fopen”的声明
-  CMD_HandleQueryUserstatus.cpp
-  CMD_GetContacts.cpp
-  ClientConnector.cpp
-  正在生成代码...
+﻿  main.cpp
   TmpServer.vcxproj -> C:\Users\89370\Desktop\dialogDuilib1\Debug\Server.exe

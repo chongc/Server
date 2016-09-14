@@ -5,7 +5,6 @@
 #include <vector>
 #include "Command.h"
 #include "ClientConnector.h"
-std::vector <ClientConnector*> Connectors;
 MainConnector::MainConnector(SOCKET &pSocket) :Connector(pSocket)
 {
 }
@@ -77,8 +76,7 @@ int MainConnector::MainStart()
 		}
 		std::cout << "有客户端正在尝试连接：" << inet_ntoa(client.sin_addr) << "--" << htons(client.sin_port) << std::endl;
 		
-		ClientConnector* cc = new ClientConnector(AcceptSocket);
-		Connectors.push_back(cc);
+		ClientConnector *cc = new ClientConnector(AcceptSocket);
 		cc->ClientStart();
 	}
 

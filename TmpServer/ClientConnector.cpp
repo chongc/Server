@@ -4,7 +4,7 @@
 #include <vector>
 #include <iostream>
 #include "Command.h"
-extern std::vector <ClientConnector*> Connectors;
+std::vector <ClientConnector*> Connectors;
 unsigned __stdcall ReceiveMessageThread(LPVOID IpParameter);
 
 ClientConnector::ClientConnector(User* pUser, SOCKET &pSocket)
@@ -25,14 +25,13 @@ ClientConnector::~ClientConnector()
 
 void ClientConnector::ClientStart()
 {
-	HANDLE receiveThread = (HANDLE)_beginthreadex(NULL, 0, &ReceiveMessageThread, (LPVOID)Connectors.size(), 0, NULL);
+	HANDLE receiveThread = (HANDLE)_beginthreadex(NULL, 0, &ReceiveMessageThread, this, 0, NULL);
 }
 
 unsigned __stdcall  ReceiveMessageThread(LPVOID IpParameter)
 {
 	//User u = GetUser()
-	int UserIndex = (int)(LPVOID)IpParameter - 1;
-	ClientConnector* con = Connectors[UserIndex];
+	ClientConnector* con = (ClientConnector*)(LPVOID)IpParameter;
 	SOCKET ClientSocket = con->GetSocket();
 
 	extern char loginResult;
@@ -51,7 +50,7 @@ unsigned __stdcall  ReceiveMessageThread(LPVOID IpParameter)
 		delete c;
 
 	} while (loginResult != LOGIN_OK);
-	
+	Connectors.push_back(con);
 	while (true)
 	{
 		Packet* p = con->ReceivePacket();
@@ -73,8 +72,17 @@ unsigned __stdcall  ReceiveMessageThread(LPVOID IpParameter)
 		delete cmd;
 	}
 	
-	/*std::vector<ClientConnector*>::iterator it = Connectors.begin() + UserIndex;
-	Connectors.erase(it);*/
+	std::vector<ClientConnector*>::iterator iter = Connectors.begin();
+	for (; iter != Connectors.end(); iter++)
+	{
+		if (*iter == con)
+		{
+			Connectors.erase(iter);
+			break;
+		}
+	}
+	
+	
 	closesocket(ClientSocket);
 	return 0;
 }
